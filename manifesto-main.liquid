@@ -1,0 +1,239 @@
+<style type="text/css">
+  @media (min-width: 768px) {
+    .manifesto_infobox_wrapper {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #manifesto-desc {
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+  }
+  #amazon {
+    transform: rotate(1deg);
+  }
+  .manifesto_infobox_wrapper {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.manifesto_image {
+  width: 750px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  z-index: 100000;
+}
+
+.manifesto_infobox {
+  max-width: 1050px;
+  background-color: rgb(255, 255, 255, 0);
+  position: block;
+  margin-bottom: 50px;
+}
+
+.paper_texture {
+  opacity: 0.9; 
+  position: absolute; 
+  bottom: -2px; 
+  width: 100%;
+}
+
+.manifesto_desc {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-top: 20px;
+  margin-bottom: 100px;
+  width: 100%;
+  padding: 20px;
+  padding-bottom: 120px;
+  border-style: solid;
+  border-color: #f9f9f9;
+  border-width: 2px 2px 0px 2px;
+}
+
+.manifesto_desc_inner {
+  margin-top: -30px;
+}
+
+.manifesto_desc_inner_div {
+  max-width: 450px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
+
+.manifesto_desc_inner_div_flex {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
+.manifesto_desc_inner_div_flex_p {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.manifesto_desc_inner_div_flex_a {
+  margin-top: 0px; 
+  width: 250px;
+}
+
+.manifesto_desc_inner_div_p {
+  text-align: center; 
+  padding-bottom: 15px;
+}
+
+.amazon_image {
+  max-width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.manifesto_discounts {
+  max-width: 650px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blackspot_press_image {
+  width: 125px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding-top: 45px;
+  padding-bottom: 15px;
+}
+
+.shopify_manifesto_open_image {
+  max-width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.manifesto_authors {
+  text-align: center;
+  font-size: 24px;
+  padding-bottom: 75px;
+  color: gray;
+  padding-top: 15px;
+  line-height: 30px;
+}
+
+.manifesto_faq {
+  padding: 20px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paper_texture_2 {
+  opacity: 0.9; 
+  position: absolute; 
+  top: -102px; 
+  width: 100%;
+}
+
+.relative{
+    position: relative;
+}
+</style>
+
+<div class="manifesto_infobox_wrapper">
+  <img
+    src="{{ 'hands hold book v2.png'| asset_url }}"
+    alt="a manifesto for world revolution"
+    class="manifesto_image"
+  />
+  <div class="manifesto_infobox">
+    <div class="relative">
+        <img class="paper_texture" src="{{ 'paper-texture-1.png'|asset_url }}" />
+    </div>
+
+    <div class="manifesto_desc">
+      <div id="manifesto-desc" class="manifesto_desc_inner">
+        {% render 'manifesto-quotes' %} {% render 'manifesto-preview' %} {% render 'preview-audio' %}
+        <div>{{ description }}</div>
+      </div>
+
+      <div class="manifesto_desc_inner_div">
+        <div class="manifesto_desc_inner_div_flex">
+          <div>
+            <p class="manifesto_desc_inner_div_flex_p">
+              Book + Mag Combo
+            </p>
+            <p class="manifesto_desc_inner_div_p">
+              World Revolution Manifesto + 6 issues of adbusters for $55
+            </p>
+          </div>
+          <a
+            href="#"
+            class="product__btn page-product__btn bs-product__btn manifesto_desc_inner_div_flex_a"
+            onclick="addManifesto()"
+          >Add to Cart</a>
+        </div>
+        <script>
+          function addManifesto() {
+            Shopify.addItem(40966764298339, 1, function () {
+              window.location.href = "https://subscribe.adbusters.org/cart";
+            });
+          }
+        </script>
+        {{ form }}
+        <p class="manifesto_desc_inner_div_p">
+          Want to talk to a real human? <br />Order by phone at:
+          <a href="tel:6047369401">(604) 736-9401</a>
+        </p>
+        <img
+        id="amazon"
+        src="{{ 'No Amazon.png'| asset_url }}"
+        alt="will not be sold on amazon"
+        class="amazon_image"
+      />
+      </div>
+      <div class="manifesto_discounts">
+        {{ manifesto_discounts }}
+      </div>
+      <img
+        src="{{ 'blackspot press.png'|asset_url }}"
+        class="blackspot_press_image"
+      />
+      <img
+        src="{{ 'shopify-manifesto-open.png'| asset_url }}"
+        alt="a manifesto for world revolution book open"
+        class="shopify_manifesto_open_image"
+      />
+  
+      <p class="manifesto_authors">
+        KALLE LASN with PEDRO INUOE and BRUCE GRIERSON
+      </p>
+  
+      <div class="manifesto_faq">
+        {{ manifesto_faq }}
+      </div>
+
+    </div>
+    <div class="relative">
+        <img class="paper_texture" src="{{ 'paper-texture-2.png'|asset_url }}" />
+    </div>
+  </div>
+    <script defer src="{{ 'fslightbox.js'| asset_url }}"></script>
+</div>
