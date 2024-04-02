@@ -1,15 +1,6 @@
 <style>
-  .preview {
-    /* Add styles for the preview container here */
-  }
-
-  .preview-link {
-    /* Add styles for the preview link here */
-  }
-
   .prologue {
     display: inline-block;
-    /* Add other styles for the prologue text here */
   }
 
   .hidden {
@@ -20,7 +11,6 @@
     padding: 10px;
     padding-left: 40px;
     padding-right: 40px;
-    /* Add other styles for the mobile text container here */
   }
 
   .mobile-text h2 {
@@ -37,9 +27,22 @@
     line-height: 24px;
     text-indent: 1.25em;
   }
+  @media (min-width: 768px) {
+    #preview-desktop {
+      display: block;
+    }
+    #preview-mobile {
+      display: none;
+    }
+  }
 </style>
-<div id="preview-desktop" class="preview hidden">
-  <a id="preview-desktop-link" class="classic-layout preview-link" data-fslightbox="gallery-desktop" href="{{ 'book-preview-1.jpg'|asset_url }}">
+<div id="preview-desktop" class="hidden">
+  <a
+    id="preview-desktop-link"
+    class="classic-layout"
+    data-fslightbox="gallery-desktop"
+    href="{{ 'book-preview-1.jpg'|asset_url }}"
+  >
     <p class="prologue">Read the Prologue</p>
   </a>
   {% for i in (2..4) %}
@@ -47,11 +50,11 @@
   {% endfor %}
 </div>
 
-<div id="preview-mobile" class="preview">
-  <a id="preview-mobile-link" class="preview-link" data-fslightbox="gallery-mobile" href="{{ 'book-preview-1-m.jpg'|asset_url }}">
+<div id="preview-mobile">
+  <a id="preview-mobile-link" data-fslightbox="gallery-mobile" href="{{ 'book-preview-1-m.jpg'|asset_url }}">
     <p class="prologue">Read the Prologue</p>
   </a>
-  {% assign placeholder_title = 'New Ways to Live Love and Think' %} 
+  {% assign placeholder_title = 'New Ways to Live Love and Think' %}
   {% assign placeholder_texts = 'One of the great epiphanies of my life happened thirty-five years ago in my neighborhood supermarket parking lot. I was plugging a coin into a shopping cart when it suddenly occurred to me just what a dope I was. Here I was putting in my quarter for the privilege of spending money in a store I come to every week but hate, a sterile chain store that rarely offers any locally grown produce and always makes me wait in line to pay. And when I am done shopping, I’d have to take this cart back to the exact spot their efficiency experts have decreed, slide it back in with all the other carts, rehook it, and press a button to get my damn quarter back.|A little internal fuse blew. I stopped moving. I glanced around to make sure no one was watching. Then I reached for that big bent coin I’d been carrying around in my pocket and I rammed it as hard as I could into the coin slot. And then with the lucky Buddha charm on my keyring I banged that coin in tight until it jammed. I didn’t stop to analyze whether this was ethical or not — I just let my anger flow. And then I walked away from the supermarket and headed for the little fruit and vegetable store down the road. I felt more alive than I had in months.|Much later I realized that I had stumbled on one of the great secrets of modern urban existence. Honor your instincts. Let your anger out. When it wells up suddenly from deep in your gut, don’t suppress it — channel it, trust it, use it. Don’t be so unthinkingly civil all the time. Don’t let small injustices pass. When the system is grinding you down, unplug the grinding wheel.|Once you start thinking and acting this way, once you realize that consumer, corpo-capitalist system we live in is by its very nature unethical, and therefore it’s not unethical to fight back; once you understand that civil disobedience has a long and honorable history that goes back to Ghandi, and Thoreau and King, Jr.; once you start trusting yourself and relating to the world as an empowered human being instead of a hapless consumer drone, something remarkable happens. Your cynicism dissolves. Your instincts sharpen.|Direct action is a proclamation of personal independence. You act. You thrust yourself forward and intervene. And then you hang loose and deal with whatever comes. In that moment of decision, in that leap into the unknown, you come to life. Your interior world is suddenly vivid. You’re like a cat on the prowl: alive, alert and still a little wild.|We’re raised to be polite and civil, but sometimes polite is exactly the wrong thing to be. Polite lets bullies off scot free. Polite lets corporations walk all over us. Polite lets our leaders do nothing about climate change. Polite lets cancerous systems grow until there’s no stopping them.|To those who doubt that massive global breakdown is coming I say: It has already started. Look around. Everything we’ve considered stable and enduring for centuries is slipping away. Corporations rule by fiat. Big Finance plays countries off against each other. Economists push for more growth while ecosystems crash. Algorithms swing elections. Unanswerable lies proliferate. And lately, brutal crazy stuff: The emergence of evil monsters like Assad, Sisi, MBS and Putin. Rape and torture are now routinely used as weapons of war.|As temperatures rise, natural systems collapse and social structures crumble, there’ll be water shortages and food riots. The number of failed states will jump from the current twenty to thirty, then fifty-plus. Refugees by the millions will first beg and then fight their way into every corner of the rich world.|And then, in a geopolitical moment of reckoning, a conflict will escalate out of control. Rage will ignite even in the most tranquil minds. All hell will break loose. Nobody will be able to control it. Hundreds of millions, maybe billions, will perish in a massive die- off. Those who survive will huddle up and cower through a dark age that could last a thousand years or more.|This is not hyperbole. The fate of this six-million-year experiment of ours on Planet Earth is hanging in the balance, if only we had the clarity of mind to see it.|At Adbusters, we often sit around blue-skying. We debate what kinds of wild interventions might actually work, what leaps of imagination could, if adopted at scale, nudge this doomsday machine of ours back onto a sane, sustainable path.|Maybe we can conduct small acts of subterfuge — like placing OUT OF ORDER signs on ATMs — that inspire a multinational grassroots campaign that brings Big Finance to its knees.'
     | split: '|'
   %}
