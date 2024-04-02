@@ -1,0 +1,94 @@
+<div id="face_quote_image_id" style="min-height:414px; display:flex; align-items:center; justify-content:center;">
+  <div class="quote-img-container">
+    <img
+      class="face-quote-image"
+      src="https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65df98bbd05c172a445eb9cd_placeholder%20552px.jpg"
+      style="width:100%; max-width: 100%; margin-left: auto; margin-right:auto;"
+    >
+  </div>
+</div>
+<script>
+  var item_list = new Array();
+  if (window.innerWidth >= 600) {
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65de343c7a72cd12686c3755_book-quote-web-1.gif'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65de3ef74c68de90ee844f1d_david-quote-rotation.gif'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65de343d0eb2f80135b4c886_book-quote-web-flip-3.gif'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65de343d3751f3834663e895_book-quote-web-4.gif'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65de343d3751f3834663e89a_book-quote-web-flip-2.gif'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/6605f1c14b5e3d2950cd149c_jason%20radical%20guide%20blurb.jpg'
+    );
+  } else {
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65df9184a796ab4b708c81f3_book-quote-socials-1-sm.jpg'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65df9185f3e4c468cbd5eb50_book-quote-socials-4-sm.jpg'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65df9186517fff4fec45339d_book-quote-socials-3-sm.jpg'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/65df91899df4d3920193a216_book-quote-socials-2-sm.jpg'
+    );
+    item_list.push(
+      'https://uploads-ssl.webflow.com/5ab163de19104964ce8a64b9/660c45d26e023d2f9513064a_jason%20radical%20guide%20blurb%20square.jpg'
+    );
+  }
+
+  var position_in_list = 0;
+  var animation_started = false;
+
+  function fadeIn(element, callback) {
+    element.style.transition = 'opacity 0.6s';
+    element.style.opacity = '1';
+    element.addEventListener('transitionend', callback, { once: true });
+  }
+
+  function fadeOut(element, callback) {
+    element.style.transition = 'opacity 0.6s';
+    element.style.opacity = '0';
+    element.addEventListener('transitionend', callback, { once: true });
+  }
+
+  function AnimateQuotes() {
+    setTimeout(function () {
+      const quoteImgContainer = document.querySelector('.quote-img-container');
+      const faceQuoteImage = document.querySelector('.face-quote-image');
+
+      fadeOut(quoteImgContainer, function () {
+        IncrementAndSetNext();
+        faceQuoteImage.addEventListener('load', function () {
+          fadeIn(quoteImgContainer, AnimateQuotes);
+        });
+      });
+    }, 5000);
+  }
+
+  function IncrementAndSetNext() {
+    if (position_in_list == item_list.length - 1) {
+      position_in_list = 0;
+    } else {
+      position_in_list = position_in_list + 1;
+    }
+    $('.quote-img-container').children().first().attr('src', item_list[position_in_list]);
+  }
+
+  function SetInitial() {
+    position_in_list = Math.floor(Math.random() * item_list.length);
+    $('.quote-img-container').children().first().attr('src', item_list[position_in_list]);
+  }
+
+  SetInitial();
+  AnimateQuotes();
+</script>
